@@ -1,11 +1,11 @@
-import { integer, text, pgTable, serial } from "drizzle-orm/pg-core";
+import { integer, text, pgTable, serial, timestamp } from "drizzle-orm/pg-core";
 
 export const accountTypeEnum = ["email", "google", "github"] as const;
 
 export const users = pgTable("user", {
   id: serial("id").primaryKey(),
   email: text("email").unique(),
-  emailVerified: integer("email_verified"),
+  emailVerified: timestamp("email_verified"),
 });
 
 export const accounts = pgTable("accounts", {
@@ -25,7 +25,7 @@ export const magicLinks = pgTable("magic_links", {
   id: serial("id").primaryKey(),
   email: text("email").notNull().unique(),
   token: text("token"),
-  tokenExpiresAt: integer("token_expires_at").notNull(),
+  tokenExpiresAt: timestamp("token_expires_at").notNull(),
 });
 
 export const resetTokens = pgTable("reset_tokens", {
@@ -35,7 +35,7 @@ export const resetTokens = pgTable("reset_tokens", {
     .unique()
     .notNull(),
   token: text("token"),
-  tokenExpiresAt: integer("token_expires_at").notNull(),
+  tokenExpiresAt: timestamp("token_expires_at").notNull(),
 });
 
 export const verifyEmailTokens = pgTable("verify_email_tokens", {
@@ -45,7 +45,7 @@ export const verifyEmailTokens = pgTable("verify_email_tokens", {
     .unique()
     .notNull(),
   token: text("token"),
-  tokenExpiresAt: integer("token_expires_at").notNull(),
+  tokenExpiresAt: timestamp("token_expires_at").notNull(),
 });
 
 export const profiles = pgTable("profile", {
@@ -67,7 +67,7 @@ export const sessions = pgTable("session", {
       onDelete: "cascade",
     })
     .notNull(),
-  expiresAt: integer("expires_at").notNull(),
+  expiresAt: timestamp("expires_at").notNull(),
 });
 
 export type User = typeof users.$inferSelect;
