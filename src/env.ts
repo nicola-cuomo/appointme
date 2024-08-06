@@ -4,8 +4,7 @@ import { z } from "zod";
 export const env = createEnv({
   server: {
     NODE_ENV: z.string().optional(),
-    DATABASE_URL: z.string().min(1),
-    DB_AUTH_TOKEN: z.string().optional(),
+    POSTGRES_URL: z.string().min(1),
     GOOGLE_CLIENT_ID: z.string().min(1),
     GOOGLE_CLIENT_SECRET: z.string().min(1),
     GITHUB_CLIENT_SECRET: z.string().min(1),
@@ -20,8 +19,7 @@ export const env = createEnv({
   client: {},
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
-    DATABASE_URL: process.env.DATABASE_URL,
-    DB_AUTH_TOKEN: process.env.DB_AUTH_TOKEN,
+    POSTGRES_URL: process.env.POSTGRES_URL,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
     HOST_NAME: process.env.HOST_NAME,
