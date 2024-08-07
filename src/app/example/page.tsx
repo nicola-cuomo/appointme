@@ -25,9 +25,10 @@ export type TipoNotifica =
   | "info"
   | "default";
 var t = 0;
-var timer = 0;
-export default function Esempi(props: { title: string; subtitle?: string }) {
-  const { title, subtitle } = props;
+let timer: NodeJS.Timeout;
+export default function Esempi() {
+  //props: { title: string; subtitle?: string }) {
+  //const { title, subtitle } = props;
   const [tipoNotifica, setTipoNotifica] = useState<TipoNotifica>("success");
   const [url, setUrl] = useState<string>(
     "https://jsonplaceholder.typicode.com/posts/1",
@@ -208,7 +209,7 @@ Il terzo useEffect ha una dipendenza da tipoNotifica, il che significa che verr√
           <option value="destructive">Error</option>
           <option value="warning">Warning</option>
           <option value="info">Info</option>
-          <option value="defaults">Default</option>
+          <option value="default">Default</option>
         </select>
         <label className="label">{_("Durata")}</label>
         <input type="number" value="1000"></input>
