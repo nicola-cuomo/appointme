@@ -11,7 +11,15 @@ export async function middleware(request: NextRequest) {
   const { host, hostname } = nextUrl;
   console.log({ url, host, hostname });
   const session = await validateRequest();
-  if (!session.user && hostname != "localhost") {
+
+  if (
+    hostname != "localhost" &&
+    request.nextUrl.pathname.startsWith("/example")
+  ) {
+    return NextResponse.rewrite(new URL("/", request.url));
+  }
+
+  if (!session.user) {
     return NextResponse.rewrite(new URL("/", request.url));
   }
 
