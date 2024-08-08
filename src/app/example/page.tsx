@@ -30,6 +30,7 @@ export default function Esempi() {
   //props: { title: string; subtitle?: string }) {
   //const { title, subtitle } = props;
   const [tipoNotifica, setTipoNotifica] = useState<TipoNotifica>("success");
+  const [duration, setDuration] = useState<number>(1000);
   const [url, setUrl] = useState<string>(
     "https://jsonplaceholder.typicode.com/posts/1",
   );
@@ -194,7 +195,7 @@ Il terzo useEffect ha una dipendenza da tipoNotifica, il che significa che verr√
               title: "Title",
               description: "description",
               variant: tipoNotifica,
-              duration: 1000,
+              duration: duration,
             });
             //showToast("Notifica di prova", tipoNotifica);
           }}
@@ -212,7 +213,10 @@ Il terzo useEffect ha una dipendenza da tipoNotifica, il che significa che verr√
           <option value="default">Default</option>
         </select>
         <label className="label">{_("Durata")}</label>
-        <input type="number" value="1000"></input>
+        <input
+          type="number"
+          onChange={(e) => setDuration(Number(e.target.value) as number)}
+        ></input>
       </div>
       <RowApiExample
         label="Senza Header Authorization"
