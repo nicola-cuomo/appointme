@@ -33,15 +33,26 @@ export async function Header() {
 
           <div className="flex items-center gap-2">
             {user && (
-              <Button
-                variant={"link"}
-                asChild
-                className="flex items-center justify-center gap-2"
-              >
-                <Link href={"/dashboard"}>
-                  <LayoutDashboard className="h-4 w-4" /> Dashboard
-                </Link>
-              </Button>
+              <>
+                <Button
+                  variant={"link"}
+                  asChild
+                  className="flex items-center justify-center gap-2"
+                >
+                  <Link href={"/dashboard"}>
+                    <LayoutDashboard className="h-4 w-4" /> Dashboard
+                  </Link>
+                </Button>
+                <Button
+                  variant={"link"}
+                  asChild
+                  className="flex items-center justify-center gap-2"
+                >
+                  <Link href={"/config/user"}>
+                    <LayoutDashboard className="h-4 w-4" /> User
+                  </Link>
+                </Button>
+              </>
             )}
           </div>
         </div>
