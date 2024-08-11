@@ -14,15 +14,13 @@ function getInRoleCondition(role: Role): Role[] {
   }
 }
 
-export function getOtherUsersByRole(
+export function getOtherUsers(
   userId: number,
-  role: Role,
 ): Promise<{ id: number; email: string; role: string }[]> {
-  const inRoleCondition = getInRoleCondition(role);
   return db
     .select({ id: users.id, email: users.email, role: users.role })
     .from(users)
-    .where(and(inArray(users.role, inRoleCondition), ne(users.id, userId)));
+    .where(ne(users.id, userId));
 }
 
 export async function getUserById(

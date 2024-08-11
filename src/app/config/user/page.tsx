@@ -1,5 +1,5 @@
 import { getCurrentUser } from "@/lib/session";
-import { getOtherUsersByRole, getUserById } from "@/lib/user";
+import { getOtherUsers, getUserById } from "@/lib/user";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -7,7 +7,9 @@ export default async function Page() {
     const user = await getCurrentUser();
     if (!user) return redirect("/sign-in");
 
-    const users = await getOtherUsersByRole(user.id, user.role);
+    if (user.role !== "admin") return redirect("/");
+
+    const users = await getOtherUsers(user.id);
 
     return (
         <div>

@@ -43,15 +43,17 @@ export async function Header() {
                     <LayoutDashboard className="h-4 w-4" /> Dashboard
                   </Link>
                 </Button>
-                <Button
-                  variant={"link"}
-                  asChild
-                  className="flex items-center justify-center gap-2"
-                >
-                  <Link href={"/config/user"}>
-                    <LayoutDashboard className="h-4 w-4" /> User
-                  </Link>
-                </Button>
+                {user.role === "admin" && (
+                  <Button
+                    variant={"link"}
+                    asChild
+                    className="flex items-center justify-center gap-2"
+                  >
+                    <Link href={"/config/user"}>
+                      <LayoutDashboard className="h-4 w-4" /> User
+                    </Link>
+                  </Button>)
+                }
               </>
             )}
           </div>
