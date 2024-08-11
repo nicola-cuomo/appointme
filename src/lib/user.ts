@@ -10,8 +10,7 @@ function getInRoleCondition(role: Role): Role[] {
     case "client":
       return ["user", "client"];
     default:
-    case "user":
-      return ["user"];
+      return [];
   }
 }
 
@@ -26,7 +25,7 @@ export function getOtherUsersByRole(
     .where(and(inArray(users.role, inRoleCondition), ne(users.id, userId)));
 }
 
-export async function getUser(
+export async function getUserById(
   id: number,
 ): Promise<{ email: string; role: Role } | undefined> {
   return (
