@@ -133,7 +133,9 @@ async function ProfileDropdown({ userId }: { userId: UserId }) {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="space-y-2">
-        <DropdownMenuLabel>{profile.displayName}</DropdownMenuLabel>
+        <DropdownMenuLabel>
+          <Link href={"/profile"}>{profile.displayName}</Link>
+        </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild className="cursor-pointer">
           <Link className="flex items-center" href={"/api/sign-out"}>
