@@ -1,3 +1,4 @@
+import { SaveButton } from "@/components/ui/saveButton";
 import { Role, roleEnum } from "@/db/schema";
 import { lucia } from "@/lib/auth";
 import { getCurrentUser } from "@/lib/session";
@@ -29,7 +30,7 @@ export default async function Page({ params: { userId } }: { params: { userId: n
                     ))}
                 </select>
                 <br />
-                <button type="submit">Save</button>
+                <SaveButton />
             </form>
         </div >
     );

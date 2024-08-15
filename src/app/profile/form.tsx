@@ -3,17 +3,7 @@
 import { Profile } from "@/db/schema";
 import { useFormState, useFormStatus } from "react-dom";
 import { updateProfileAction } from "./actions";
-
-function Button() {
-    const { pending } = useFormStatus();
-    return (
-        <button disabled={pending}
-            type="submit"
-            className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-            {pending ? 'Saving...' : 'Save'}
-        </button>)
-}
+import { SaveButton } from "@/components/ui/saveButton";
 
 export default function Form({ profile }: { profile: Profile }) {
     const [state, dispatch] = useFormState(updateProfileAction, profile);
@@ -29,7 +19,7 @@ export default function Form({ profile }: { profile: Profile }) {
                     defaultValue={state.displayName}
                 />
             </label>
-            <Button />
+            <SaveButton />
         </form>
     );
 }

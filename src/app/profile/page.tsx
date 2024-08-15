@@ -11,8 +11,6 @@ export default async function Page() {
 
     if (!profile) return <div>Profile not found</div>;
 
-
-
     return (
         <div className="container mx-auto">
             <div className="flex items-center justify-between py-8">
