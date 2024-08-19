@@ -13,10 +13,10 @@ export async function middleware(request: NextRequest) {
   const session = await validateRequest();
 
   if (
-    hostname != "localhost" &&
+    hostname == "localhost" &&
     request.nextUrl.pathname.startsWith("/example")
   ) {
-    return NextResponse.rewrite(new URL("/", request.url));
+    return response;
   }
 
   if (!session.user) {
