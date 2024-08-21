@@ -5,7 +5,9 @@ import {
   serial,
   timestamp,
   pgEnum,
+  AnyPgColumn,
 } from "drizzle-orm/pg-core";
+import { SQL, sql } from "drizzle-orm";
 
 export const accountTypeEnum = ["email", "google", "github"] as const;
 export const roleEnum = pgEnum("role", ["user", "admin", "client"]);
@@ -16,6 +18,11 @@ export const users = pgTable("user", {
   emailVerified: timestamp("email_verified"),
   role: roleEnum("role").default("user").notNull(),
 });
+
+//FL add function 'lower' for sign-in case-insensitive
+export function lower(email: AnyPgColumn): SQL {
+  return sql`lower(${email})`;
+}
 
 export const accounts = pgTable("accounts", {
   id: serial("id").primaryKey(),
