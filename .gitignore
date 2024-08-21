@@ -10,7 +10,7 @@ db.sqlite
 
 # testing
 /coverage
-/app/examples
+/src/app/examples
 
 # next.js
 /.next/
