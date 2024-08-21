@@ -52,8 +52,8 @@ export async function Header() {
                     <Link href={"/config/user"}>
                       <LayoutDashboard className="h-4 w-4" /> User
                     </Link>
-                  </Button>)
-                }
+                  </Button>
+                )}
               </>
             )}
           </div>
@@ -80,7 +80,8 @@ async function ProfileAvatar({ userId }: { userId: number }) {
 
   return (
     <Avatar>
-      <AvatarImage src={"/next.svg"} />
+      <AvatarImage src={profile.image ? profile.image : ""} />{" "}
+      {/* FL fix view image from profile's field image */}
       <AvatarFallback>
         {profile.displayName?.substring(0, 2).toUpperCase() ?? "AA"}
       </AvatarFallback>
