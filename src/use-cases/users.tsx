@@ -68,7 +68,7 @@ export async function registerUserUseCase(email: string, password: string) {
 
   const user = await createUser(email);
   await createAccount(user.id, password);
-  await createProfile(user.id, generateRandomName());
+  await createProfile(user.id, email.split("@")[0]); //FL replace generateRandomName() with email.split
 
   const token = await createVerifyEmailToken(user.id);
   await sendEmail(
