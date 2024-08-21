@@ -1,5 +1,5 @@
 import { db } from "@/db";
-import { User, accounts, users } from "@/db/schema";
+import { User, accounts, lower, users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import crypto from "crypto";
 import { UserId } from "@/use-cases/types";
@@ -92,7 +92,7 @@ export async function verifyPassword(email: string, plainTextPassword: string) {
 
 export async function getUserByEmail(email: string) {
   const user = await db.query.users.findFirst({
-    where: eq(users.email, email),
+    where: eq(lower(users.email), email.toLowerCase()), //FL add function 'lower' for sign-in case-insensitive
   });
 
   return user;
