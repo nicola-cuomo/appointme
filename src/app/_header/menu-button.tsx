@@ -8,10 +8,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { BookIcon, MenuIcon, SearchIcon, UsersIcon } from "lucide-react";
 import Link from "next/link";
+import { MobileSidebar } from "../layout/mobile-sidebar";
 
 export function MenuButton() {
   return (
-    <DropdownMenu>
+    <MobileSidebar />
+    /*<DropdownMenu>
       <DropdownMenuTrigger>
         <MenuIcon />
       </DropdownMenuTrigger>
@@ -38,6 +40,6 @@ export function MenuButton() {
           </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
-    </DropdownMenu>
+    </DropdownMenu>*/
   );
 }
