@@ -11,11 +11,21 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { LayoutDashboard, Lightbulb, Loader2Icon, LogOut } from "lucide-react";
+import {
+  BookUser,
+  CircleUserRound,
+  LayoutDashboard,
+  Lightbulb,
+  Loader2Icon,
+  LogOut,
+  Menu,
+  Settings,
+} from "lucide-react";
 import { getUserProfileUseCase } from "@/use-cases/users";
 import { ModeToggle } from "./mode-toggle";
 import { MenuButton } from "./menu-button";
 import { UserId } from "@/types";
+import { Separator } from "@/components/ui/separator";
 
 const profilerLoader = cache(getUserProfileUseCase);
 
@@ -25,13 +35,17 @@ export async function Header() {
   return (
     <div className="border-b py-4">
       <div className="container mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-4">
+          <div className="flex h-5 items-center space-x-4 text-sm md:hidden">
+            <MenuButton />
+            <Separator orientation="vertical" />
+          </div>
           <Link href="/" className="flex items-center gap-2 text-xl">
             <Lightbulb />
-            <div className="hidden md:block">APP</div>
+            <h1 className="text-lg font-semibold">App Name</h1>
           </Link>
 
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             {user && (
               <>
                 <Button
@@ -48,15 +62,11 @@ export async function Header() {
                     variant={"link"}
                     asChild
                     className="flex items-center justify-center gap-2"
-                  >
-                    <Link href={"/config/user"}>
-                      <LayoutDashboard className="h-4 w-4" /> User
-                    </Link>
-                  </Button>
+                  ></Button>
                 )}
               </>
             )}
-          </div>
+          </div> FL commented for replace with sidebar menu  */}
         </div>
 
         <div className="flex items-center justify-between gap-5">
@@ -97,13 +107,13 @@ async function HeaderActions() {
     <>
       {isSignedIn ? (
         <>
-          <div className="hidden md:block">
-            <ModeToggle />
-          </div>
+          {/* <div className="hidden md:block"> FL commented for always see modetoggle */}
+          <ModeToggle />
+          {/* </div> */}
           <ProfileDropdown userId={user.id} />
-          <div className="md:hidden">
+          {/*  <div className="md:hidden">
             <MenuButton />
-          </div>
+          </div> FL move the menubutton on function Header()*/}
         </>
       ) : (
         <>
@@ -134,9 +144,28 @@ async function ProfileDropdown({ userId }: { userId: UserId }) {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="space-y-2">
-        <DropdownMenuLabel>{profile.displayName}</DropdownMenuLabel>
+        <DropdownMenuItem asChild>
+          <Link
+            className="item-left flex"
+            href={{
+              pathname: "/pages/users/profile",
+              query: {
+                userId: userId,
+              },
+            }}
+          >
+            <CircleUserRound className="mr-2 h-4 w-4" />
+            {profile.displayName}
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link className="item-left flex" href={"/config/settings"}>
+            <Settings className="mr-2 h-4 w-4" />
+            Setting
+          </Link>
+        </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem asChild className="cursor-pointer">
+        <DropdownMenuItem>
           <Link className="flex items-center" href={"/api/sign-out"}>
             <LogOut className="mr-2 h-4 w-4" />
             Sign Out

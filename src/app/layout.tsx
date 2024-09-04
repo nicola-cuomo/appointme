@@ -9,6 +9,8 @@ import { Libre_Franklin } from "next/font/google";
 import { Providers } from "./providers";
 import { Toaster } from "@/components/ui/toaster";
 import { Header } from "./_header/header";
+import Sidebar from "./layout/sidebar";
+import { getCurrentUser } from "@/lib/session";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -35,6 +37,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const user = await getCurrentUser();
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -46,7 +49,16 @@ export default async function RootLayout({
         <Providers>
           <NextTopLoader />
           <Header />
-          <div className="container mx-auto w-full py-12">{children}</div>
+          <div className="flex h-screen border-collapse overflow-hidden">
+            {
+              user && (
+                <Sidebar role={user.role} />
+              ) /*FL hidden sidebar if not login*/
+            }
+            <main className="flex-1 overflow-y-auto overflow-x-hidden bg-secondary/10 pb-1">
+              <div className="flex-1 space-y-4 p-8 pt-6">{children}</div>
+            </main>
+          </div>
         </Providers>
         <Toaster />
       </body>
