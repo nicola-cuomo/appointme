@@ -1,6 +1,7 @@
 import { db } from "@/db";
-import { Role, users } from "@/db/schema";
+import { profiles, Role, users } from "@/db/schema";
 import { and, eq, inArray, ne } from "drizzle-orm";
+import { User } from "lucia";
 import "server-only";
 
 function getInRoleCondition(role: Role): Role[] {
@@ -14,12 +15,16 @@ function getInRoleCondition(role: Role): Role[] {
   }
 }
 
-export function getOtherUsers(
-  userId: number,
-): Promise<{ id: number; email: string; role: string }[]> {
+export function getOtherUsers(userId: number): any {
   return db
-    .select({ id: users.id, email: users.email, role: users.role })
+    .select({
+      id: users.id,
+      email: users.email,
+      role: users.role,
+      username: profiles.displayName,
+    })
     .from(users)
+    .leftJoin(profiles, eq(users.id, profiles.userId))
     .where(ne(users.id, userId));
 }
 

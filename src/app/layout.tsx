@@ -55,7 +55,7 @@ export default async function RootLayout({
                 <Sidebar role={user.role} />
               ) /*FL hidden sidebar if not login*/
             }
-            <main className="flex-1 overflow-y-auto overflow-x-hidden bg-secondary/10 pb-1 pt-16">
+            <main className="flex-1 overflow-y-auto overflow-x-hidden bg-secondary/10 pb-1">
               <div className="flex-1 space-y-4 p-8 pt-6">{children}</div>
             </main>
           </div>

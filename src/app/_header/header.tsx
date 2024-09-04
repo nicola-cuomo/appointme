@@ -25,8 +25,7 @@ import { getUserProfileUseCase } from "@/use-cases/users";
 import { ModeToggle } from "./mode-toggle";
 import { MenuButton } from "./menu-button";
 import { UserId } from "@/types";
-import { MobileSidebar } from "../layout/mobile-sidebar";
-import { Separator } from "@radix-ui/react-dropdown-menu";
+import { Separator } from "@/components/ui/separator";
 
 const profilerLoader = cache(getUserProfileUseCase);
 
@@ -36,9 +35,10 @@ export async function Header() {
   return (
     <div className="border-b py-4">
       <div className="container mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-8">
-          <div className="md:hidden">
+        <div className="flex items-center gap-4">
+          <div className="flex h-5 items-center space-x-4 text-sm md:hidden">
             <MenuButton />
+            <Separator orientation="vertical" />
           </div>
           <Link href="/" className="flex items-center gap-2 text-xl">
             <Lightbulb />
@@ -145,7 +145,15 @@ async function ProfileDropdown({ userId }: { userId: UserId }) {
 
       <DropdownMenuContent className="space-y-2">
         <DropdownMenuItem asChild>
-          <Link className="item-left flex" href={`/config/user/${userId}`}>
+          <Link
+            className="item-left flex"
+            href={{
+              pathname: "/pages/users/profile",
+              query: {
+                userId: userId,
+              },
+            }}
+          >
             <CircleUserRound className="mr-2 h-4 w-4" />
             {profile.displayName}
           </Link>

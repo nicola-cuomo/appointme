@@ -1,18 +1,29 @@
-import { BookOpenCheck, LayoutDashboard, Users } from "lucide-react";
+import {
+  BookOpenCheck,
+  LayoutDashboard,
+  UserCircle,
+  Users,
+} from "lucide-react";
 import { type NavItem } from "@/types";
 
 export const NavItems: NavItem[] = [
   {
     title: "Dashboard",
     icon: LayoutDashboard,
-    href: "/dashboard",
+    href: "/pages/dashboard",
     color: "text-sky-500",
     role: ["admin"],
   },
   {
     title: "Users",
     icon: Users,
-    href: "/config/user",
+    href: "/pages/users",
+    color: "text-sky-500",
+  },
+  {
+    title: "Account",
+    icon: UserCircle,
+    href: "/pages/users/profile",
     color: "text-sky-500",
   },
   {
@@ -26,7 +37,7 @@ export const NavItems: NavItem[] = [
         title: "Example-01",
         icon: BookOpenCheck,
         color: "text-red-500",
-        href: "/example/employees",
+        href: "/examples/profile",
       },
       {
         title: "Example-02",
