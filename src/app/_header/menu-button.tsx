@@ -12,7 +12,7 @@ import { MobileSidebar } from "../layout/mobile-sidebar";
 
 export function MenuButton() {
   return (
-    <MobileSidebar />
+    (<MobileSidebar />)
     /*<DropdownMenu>
       <DropdownMenuTrigger>
         <MenuIcon />

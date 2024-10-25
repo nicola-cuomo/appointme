@@ -7,9 +7,9 @@ import { getUserById } from "@/lib/user";
 import { getAccountByUserId } from "@/data-access/accounts";
 
 export default async function ProfilePage(context: {
-  searchParams: { userId: any };
+  searchParams: Promise<{ userId: any }>;
 }) {
-  let userId = Number(context.searchParams.userId);
+  let userId = Number((await context.searchParams).userId);
   const loggedUser = await getCurrentUser();
   if (!loggedUser) return redirect("/sign-in");
 
