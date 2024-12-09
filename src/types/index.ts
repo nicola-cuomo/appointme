@@ -1,4 +1,4 @@
-import { Role } from "@/db/schema";
+import { Role } from "@/db/schemaLogin";
 import { LucideIcon } from "lucide-react";
 
 export type UserId = number;

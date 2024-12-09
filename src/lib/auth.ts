@@ -2,7 +2,7 @@ import { GitHub, Google } from "arctic";
 import { Lucia } from "lucia";
 import { DrizzlePostgreSQLAdapter } from "@lucia-auth/adapter-drizzle";
 import { db } from "@/db";
-import { Role, sessions, users } from "@/db/schema";
+import { Role, sessions, users } from "@/db/schemaLogin";
 import { cookies } from "next/headers";
 import { User } from "lucia";
 import { Session } from "lucia";

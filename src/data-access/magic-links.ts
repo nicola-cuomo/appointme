@@ -1,6 +1,6 @@
 import { generateRandomToken } from "@/data-access/utils";
 import { db } from "@/db";
-import { magicLinks } from "@/db/schema";
+import { magicLinks } from "@/db/schemaLogin";
 import { eq } from "drizzle-orm";
 
 export const TOKEN_LENGTH = 32;

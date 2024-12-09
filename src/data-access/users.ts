@@ -1,5 +1,5 @@
 import { db } from "@/db";
-import { User, accounts, lower, users } from "@/db/schema";
+import { User, accounts, lower, users } from "@/db/schemaLogin";
 import { eq } from "drizzle-orm";
 import crypto from "crypto";
 import { UserId } from "@/use-cases/types";
