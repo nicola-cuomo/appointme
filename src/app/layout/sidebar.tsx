@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { useSidebar } from "@/hooks/useSidebar";
 import { ArrowLeft } from "lucide-react";
 import { SideNav } from "./side-nav";
-import { Role } from "@/db/schema";
+import { Role } from "@/db/schemaLogin";
 import { NavItems } from "@/components/constants/side-nav";
 
 interface SidebarProps {

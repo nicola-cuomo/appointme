@@ -4,13 +4,10 @@ import {
   pgTable,
   serial,
   timestamp,
-  pgEnum,
   AnyPgColumn,
 } from "drizzle-orm/pg-core";
 import { SQL, sql } from "drizzle-orm";
-
-export const accountTypeEnum = ["email", "google", "github"] as const;
-export const roleEnum = pgEnum("role", ["user", "admin", "client"]);
+import { accountTypeEnum, roleEnum } from "./constants";
 
 export const users = pgTable("user", {
   id: serial("id").primaryKey(),
