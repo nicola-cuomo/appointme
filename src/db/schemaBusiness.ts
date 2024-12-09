@@ -25,19 +25,19 @@ export const detBusiness = pgTable("det_business", {
   isActive: boolean("is_active").default(true).notNull(),
   code: integer("code"),
   registrationDate: timestamp("registration_date", { mode: "string" }),
-  type: varchar("type", { length: 30 }).notNull(),
-  name: varchar("name", { length: 255 }).notNull().default("Business Details"),
+  type: varchar("type", { length: 30 }),
+  name: varchar("name", { length: 255 }).default("Business Details"),
   description: text("description"),
   image: text("image"),
-  timezone: time("timezone").notNull(),
+  timezone: time("timezone"),
   isOpen: boolean("is_open").default(false),
   email: varchar("email", { length: 255 }),
   mobileNumber: integer("mobile_number"),
   telephoneNumber: integer("telephone_number"),
-  city: varchar("city", { length: 50 }).notNull(),
-  postalCode: integer("postal_code").notNull(),
-  province: varchar("province", { length: 2 }).notNull(),
-  address: varchar("address", { length: 255 }).notNull(),
+  city: varchar("city", { length: 50 }),
+  postalCode: integer("postal_code"),
+  province: varchar("province", { length: 2 }),
+  address: varchar("address", { length: 255 }),
   linkFacebook: varchar("link_facebook", { length: 255 }),
   linkInstagram: varchar("link_instagram", { length: 255 }),
   linkWeb: varchar("link_web", { length: 255 }),
@@ -124,7 +124,7 @@ export const detBusinessQueue = pgTable("det_business_queue", {
 });
 
 export const detBusinessService = pgTable("det_business_service", {
-  detBusinessServiceId: uuid("det_business_appointment_opening_id::uuid")
+  detBusinessServiceId: uuid("det_business_service_id::uuid")
     .primaryKey()
     .notNull(),
   detBusinessId: uuid("det_business_id::uuid")
