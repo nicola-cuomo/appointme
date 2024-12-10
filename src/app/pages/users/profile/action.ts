@@ -1,7 +1,7 @@
 "use server";
 
 import { updateProfile } from "@/data-access/profiles";
-import { Role } from "@/db/schema";
+import { Role } from "@/db/schemaLogin";
 import { unauthenticatedAction } from "@/lib/safe-action";
 import { updateUserRole } from "@/lib/user";
 import { z } from "zod";

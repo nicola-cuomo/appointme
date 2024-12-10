@@ -1,6 +1,6 @@
 import { generateRandomToken } from "@/data-access/utils";
 import { db } from "@/db";
-import { verifyEmailTokens } from "@/db/schema";
+import { verifyEmailTokens } from "@/db/schemaLogin";
 import { UserId } from "@/use-cases/types";
 import { eq } from "drizzle-orm";
 import { TOKEN_LENGTH, TOKEN_TTL } from "./magic-links";

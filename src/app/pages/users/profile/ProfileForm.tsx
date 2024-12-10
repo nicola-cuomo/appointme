@@ -14,7 +14,8 @@ import { getCurrentUser } from "@/lib/session";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Profile, roleEnum } from "@/db/schema";
+import { Profile } from "@/db/schemaLogin";
+import { roleEnum } from "@/db/constants";
 import {
   Card,
   CardContent,
