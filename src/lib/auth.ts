@@ -29,7 +29,8 @@ export const lucia = new Lucia(adapter, {
 export const validateRequest = async (): Promise<
   { user: User; session: Session } | { user: null; session: null }
 > => {
-  const sessionId = (await cookies()).get(lucia.sessionCookieName)?.value ?? null;
+  const sessionId =
+    (await cookies()).get(lucia.sessionCookieName)?.value ?? null;
   if (!sessionId) {
     return {
       user: null,
@@ -76,6 +77,7 @@ declare module "lucia" {
 export const github = new GitHub(
   env.GITHUB_CLIENT_ID,
   env.GITHUB_CLIENT_SECRET,
+  null,
 );
 
 export const googleAuth = new Google(
