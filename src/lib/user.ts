@@ -1,5 +1,5 @@
 import { db } from "@/db";
-import { profiles, Role, users } from "@/db/schema";
+import { profiles, Role, users } from "@/db/schemaLogin";
 import { and, eq, inArray, ne } from "drizzle-orm";
 import { User } from "lucia";
 import "server-only";

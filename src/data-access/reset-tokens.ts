@@ -1,5 +1,5 @@
 import { generateRandomToken } from "@/data-access/utils";
-import { resetTokens } from "@/db/schema";
+import { resetTokens } from "@/db/schemaLogin";
 import { UserId } from "@/use-cases/types";
 import { eq } from "drizzle-orm";
 import { TOKEN_LENGTH, TOKEN_TTL } from "./magic-links";
